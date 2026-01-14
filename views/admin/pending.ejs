@@ -1,0 +1,24 @@
+<h2>Pending Issue Requests</h2>
+
+<table border="1">
+<tr>
+  <th>User</th>
+  <th>Book</th>
+  <th>Action</th>
+</tr>
+
+<% pendingRequests.forEach(p => { %>
+<tr>
+  <td><%= p.userId.username %></td>
+  <td><%= p.bookId.title %></td>
+  <td>
+    <form method="POST" action="/transactions/admin/approve">
+      <input type="hidden" name="txId" value="<%= p._id %>">
+      <button>Approve</button>
+    </form>
+  </td>
+</tr>
+<% }) %>
+</table>
+
+<a href="/admin/dashboard">Back</a>
